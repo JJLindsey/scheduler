@@ -1,40 +1,36 @@
 
-var interval = setInterval(hourUpdate, 15000);
+//var interval = setInterval(hourUpdate, 15000);
 
-// function hourUpdate() {
-//     var currentHour = moment().hours();
-// }
+  
+  // Date object
+var displayDate = new Date().toLocaleDateString(undefined,{weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+    $(document).ready(function() {
+      $("#currentDay").append(displayDate)
+})
 
-//$('.date').text(moment().format('dddd, MMMM Do'));
-
-// get current date
-var currentDate = new Date();
-
-
-//items to localStorage
-var saveTask = document.querySelector("#saveBtn");
-
-var entry = JSON.parse(localStorage.setItem('usertask')) || [];
-
-//define function 
-function saveTask(){
     
-}
+
 //event listener
-$("#saveBtn").on("click", function(event) {
+$(".btn").on("click", function(event) {
     event.preventDefault();
-
-    var toDoEntry = $(".form-control").val().trim();
     //console.log(event);
-
-    //define 'entry' variabel earlier
-    entry.push(todoEntry);
-
-    //define saveTask function push it to entry
-    saveTask(entry)
     
-    //retreiving usertask entry from localstorage
-    localStorage.getItem("usertask", JSON.stringify(entry));
+  $(document).ready(function() {
+    $('.btn').on('click', function() {
+      var toDoEntry = $(this).closest("div.input-group").find("input[class='form-control']").val();
+      //alert(toDoEntry);
+      localStorage.setItem("userEntry", JSON.stringify(toDoEntry))
+      //console.log(toDoEntry);
+      })
+    })
+});
 
-    });
-}
+
+
+
+//listen for save button clicks
+//$("#save").on('click', function() {
+//get nearby values -look into siblings and parents relationship in jQuery
+//save in localStorage
+//Show notifications that item was saved to localStorage by adding class .show
+//Timeout to remove .show class after 5 seconds
