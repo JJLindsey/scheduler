@@ -6,24 +6,61 @@ var displayDate = dayjs().format('dddd, MMMM.DD.YYYY');
     $("#currentDay").append(displayDate)
   });
 
+    
+// $(document).ready(function () {
+
+//   var myEntries = JSON.parse(localStorage.getItem('userEntry')) || [];
+
+//   // render saved data
+//   var allInputForms = $('.form-control')
+
+//   console.log(allInputForms)
+
+//   for (let i = 0; i < allInputForms.length; i++) {
+//     var currentInputForm = allInputForms[i];
+//     var myText = '';
+
+//     for (let j = 0; j < myEntries.length; j++) {
+//       var currentCustomData = $(currentInputForm).attr('custom-data');
+
+//       var currentEntry = myEntries[j];
+
+//       if (currentCustomData == currentEntry.hour) {
+//         myText = currentEntry.text;
+//       }
+//     }
+//   }
+
+//     $(currentInputForm).val(myText)
+// })
+// for (let i = 0; i < inputForms.length; i++) {
+//   var currentHour = parseInt(dayjs().format('H'));
+//  var inputHour = parseInt($(inputForms[i]).attr('data-hour'));
+// }
+
 
 //edit due dated in time block 
-var inputForms = $("#user-task");
+var inputForms = $(".form-control");
   for (let i = 0; i < inputForms.length; i++) {
-    var currentHour = dayjs().format('H');
-    var inputHour = $(inputForms[i]).attr('data-hour');
+    var currentHour = parseInt(dayjs().format('H'));
+    var inputHour = parseInt($(inputForms[i]).attr('data-hour'));
     //compare these 2 variables 
     //add class past, present, future
-      if(currentHour === inputHour) {
-        $(inputForms[i]).addClass("present");
-    
-      } else if(currentHour < inputHour) {
+      if(currentHour > inputHour) {
         $(inputForms[i]).addClass("past");
     
-      } else if(currentHour > inputHour)
-        $(inputForms[i]).addClass("future");
+      } else if(currentHour === inputHour) {
+        $(inputForms[i]).addClass("present")
+        $(inputForms[i]).removeClass("past")
+        
+    
+      } else {
+        $(inputForms[i]).addClass("future")
+        $(inputForms[i]).removeClass("present")
+        $(inputForms[i]).removeClass("past")
       //console.log(inputForms);
   };
+};
 
 //event listener with local storage
     //console.log(event);
