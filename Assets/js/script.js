@@ -1,31 +1,48 @@
 
 //var interval = setInterval(hourUpdate, 15000);
-
-  
-  // Date object
-var displayDate = new Date().toLocaleDateString(undefined,{weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
-    $(document).ready(function() {
-      $("#currentDay").append(displayDate)
-})
-
-    
-
-//event listener
-$(".btn").on("click", function(event) {
-    event.preventDefault();
-    //console.log(event);
-    
+//day JS
+var displayDate = dayjs().format('dddd, MMMM.DD.YYYY');
   $(document).ready(function() {
-    $('.btn').on('click', function() {
-      var toDoEntry = $(this).closest("div.input-group").find("input[class='form-control']").val();
-      //alert(toDoEntry);
+    $("#currentDay").append(displayDate)
+  });
+
+
+//edit due dated in time block 
+var inputForms = $("#user-task");
+  for (let i = 0; i < inputForms.length; i++) {
+    var currentHour = dayjs().format('H');
+    var inputHour = $(inputForms[i]).attr('data-hour');
+    //compare these 2 variables 
+    //add class past, present, future
+      if(currentHour === inputHour) {
+        $(inputForms[i]).addClass("present");
+    
+      } else if(currentHour < inputHour) {
+        $(inputForms[i]).addClass("past");
+    
+      } else if(currentHour > inputHour)
+        $(inputForms[i]).addClass("future");
+      //console.log(inputForms);
+  };
+
+//event listener with local storage
+    //console.log(event);
+  //save input to localstorage
+$(document).ready(function() {
+    $('.btn').on('click', function(event) {
+      event.preventDefault();
+      var toDoEntry = $(this).closest("div.input-group").find("input[class~='form-control']").val();
+      console.log($(this).closest("div.input-group"));
       localStorage.setItem("userEntry", JSON.stringify(toDoEntry))
       //console.log(toDoEntry);
       })
-    })
-});
+})
+
+//color code time blocks in past, present and future with Moment.js
 
 
+
+//saved events persists even when page refreshed
 
 
 //listen for save button clicks
