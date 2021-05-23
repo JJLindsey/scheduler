@@ -13,6 +13,6 @@ Bootstrap
 ## Live app:
 https://jjlindsey.github.io/scheduler/
 
-<img src="./assets/screenCapt.png" height=400 >
+<img src="./assets/screenCapt.png" height=400/>
 
 ### ©2021 Jennifer Lindsey
