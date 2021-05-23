@@ -8,17 +8,17 @@ textarea{
   background: transparent;
   border: none;
   resize: none;
-  color: #000000;
-  border-left: 1px solid black;
+  color: #2b4c8c;
+  border-left: 1px solid #021e73;
   padding: 10px;
 }
 
 .jumbotron {
   text-align: center;
-  background-color: #f5f4af;
-  color: rgb(56, 56, 56);
+  background-color: #27CDF2;
+  color: #151f3b;
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 10px solid #021e73;
 }
 
 .description{
@@ -41,6 +41,11 @@ textarea{
   color: #000000;
 }
 
+#currentDay {
+  color: #f2f0d5;
+  font-size: 34px;
+}
+
 .past {
   background-color: #afaeae;
   color: white;
@@ -57,10 +62,10 @@ textarea{
 }
 
 #saveBtn {
-  border-left: 1px solid black;
+  border-left: 1px solid rgb(170, 170, 170);
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06AED5;
+  background-color: #F54A21;
   color: white;
 }
 
