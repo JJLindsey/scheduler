@@ -1,11 +1,11 @@
 
 // get the data from local storage on page load
-var saveData = localStorage.getItem("userEntry");
-var parseData = JSON.parse(saveData);
-// select a textbox element using jQuery
-var targetTextBox = $('form-control');
-// change the value of the selected textbox to parseData
-targetTextBox.val(parseData)
+// var saveData = localStorage.getItem('i+9');
+// var parseData = JSON.parse(saveData);
+// // select a textbox element using jQuery
+// var targetTextBox = $('.form-control');
+// // change the value of the selected textbox to parseData
+// targetTextBox.val(parseData)
 
 //day JS
 var displayDate = dayjs().format('dddd, MMMM.DD.YYYY');
@@ -34,6 +34,8 @@ var inputForms = $(".form-control");
         $(inputForms[i]).removeClass("present")
         $(inputForms[i]).removeClass("past")
       //console.log(inputForms);
+      var savetext = JSON.parse(localStorage.getItem(i+10))
+      $(inputForms[i]).val(savetext)
   };
 };
 
@@ -45,9 +47,10 @@ $(document).ready(function() {
       event.preventDefault();
       var toDoEntry = $(this).closest("div.input-group").find("input[class~='form-control']").val();
       // get the data-hour value number
-      var toDoHour = $(this).closest("div.input-group").find("input[class~='form-control']").attr('data-hour');
+      var datahour = $(this).closest("div.input-group").find("input[class~='form-control']").attr('data-hour');
+      
       console.log($(this).closest("div.input-group"));
-      localStorage.setItem("userEntry", JSON.stringify(toDoEntry));
+      localStorage.setItem(datahour, JSON.stringify(toDoEntry));
       //console.log(toDoEntry);
       })
 })
